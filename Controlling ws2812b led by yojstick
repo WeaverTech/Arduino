@@ -1,0 +1,50 @@
+#include <LiquidCrystal.h>
+#include <FastLED.h>
+#define LED_PIN     8
+#define NUM_LEDS    8
+CRGB leds[NUM_LEDS];
+LiquidCrystal lcd(2, 3, 4, 5, 6, 7);
+
+void setup()  {  
+  FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, NUM_LEDS);  
+  pinMode(13, INPUT);
+  pinMode(A0, INPUT);Controlling ws2812b led by yojstick
+  pinMode(A1, INPUT);  
+}  
+  
+void loop()  {  
+  int x=analogRead(A0);
+  int y=analogRead(A1);  
+  lcd.begin(16,2);
+  lcd.setCursor(0,0);
+  lcd.print("Axis x  :");
+  lcd.print(x);  
+  lcd.setCursor(0,1);
+  lcd.print("Axis y  :");
+  lcd.print(y);  
+
+  leds[0] = CRGB(x, y, 0);
+  FastLED.show();
+ 
+  leds[1] = CRGB(x, y , 0);
+  FastLED.show();
+  
+  leds[2] = CRGB(x, y, 0);
+  FastLED.show();
+ 
+  leds[3] = CRGB(x, y, 0);
+  FastLED.show();
+
+  leds[4] = CRGB(x, y, 0);
+  FastLED.show();
+
+  leds[5] = CRGB(x, y, 0);
+  FastLED.show();
+  
+  leds[6] = CRGB(x, y, 0);
+  FastLED.show();
+ 
+  leds[7] = CRGB(x, y, 0);
+  FastLED.show();
+  
+}  
